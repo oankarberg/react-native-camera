@@ -14,13 +14,19 @@ Pod::Spec.new do |s|
 
   s.requires_arc   = true
   s.platform       = :ios, '9.0'
+  
+  s.prefix_header_file = 'ios/PrefixHeader.pch'
+
+  
 
   s.subspec "RCT" do |ss|
     ss.source_files = "ios/RCT/**/*.{h,m}"
   end
 
   s.subspec "RN" do |ss|
-    ss.source_files = "ios/RN/**/*.{h,m}"
+    ss.source_files = "ios/RN/**/*.{h,m,mm,hpp,cpp}"
+    ss.dependency 'OpenCV2'
+    ss.prefix_header_file = 'ios/PrefixHeader.pch'
   end
 
   s.subspec "TextDetector" do |ss|
@@ -42,6 +48,12 @@ Pod::Spec.new do |s|
     ss.dependency 'react-native-camera/RCT'
     ss.dependency 'Firebase/MLVision'
     ss.dependency 'Firebase/MLVisionBarcodeModel'
+  end
+
+  s.subspec "YatzyGridDetector" do |ss|
+    ss.dependency 'react-native-camera/RN'
+    ss.dependency 'react-native-camera/RCT'
+    ss.source_files = "yatzyscore/**/*"
   end
 
   s.default_subspecs = "RN", "RCT"

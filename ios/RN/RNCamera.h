@@ -6,6 +6,7 @@
 #import "FaceDetectorManagerMlkit.h"
 #import "BarcodeDetectorManagerMlkit.h"
 #import "TextDetectorManager.h"
+#import "YatzyGridDetectorManager.h"
 
 @class RNCamera;
 
@@ -43,6 +44,7 @@
 @property(nonatomic, assign) BOOL isRecordingInterrupted;
 @property(nonatomic, assign) BOOL isDetectingFaces;
 @property(nonatomic, assign) BOOL canReadText;
+@property(nonatomic, assign) BOOL canDetectYatzyGrid;
 @property(nonatomic, assign) BOOL canDetectFaces;
 @property(nonatomic, assign) BOOL canDetectBarcodes;
 @property(nonatomic, assign) BOOL captureAudio;
@@ -92,6 +94,7 @@
 - (void)pausePreview;
 - (void)setupOrDisableBarcodeScanner;
 - (void)setupOrDisableTextDetector;
+- (void)setupOrDisableYatzyGridDetector;
 - (void)setupOrDisableFaceDetector;
 - (void)setupOrDisableBarcodeDetector;
 - (void)onReady:(NSDictionary *)event;
@@ -103,6 +106,7 @@
 - (void)onRecordingStart:(NSDictionary *)event;
 - (void)onRecordingEnd:(NSDictionary *)event;
 - (void)onText:(NSDictionary *)event;
+- (void)onYatzyGridDetected:(NSDictionary *)event;
 - (void)onBarcodesDetected:(NSDictionary *)event;
 - (bool)isRecording;
 - (void)onSubjectAreaChanged:(NSDictionary *)event;
